@@ -1,30 +1,32 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const itemRoutes = require('./routes/productoRoutes')
-const app = express();
-const port=3000;
+const express=require('express');
+const mongoose=require('mongoose');
+const bodyParser=require('body-parser');
+const cors=require('cors');
+const ClienteRoutes=require('./routes/productoRoutes')
+const usuariosRoutes=require('./routes/usuariosRoutes')
 
-//Middleware
+const app=express();
+const PORT=3000;
 
+//Midleware
 app.use(bodyParser.json());
 app.use(cors());
 
-//Conexion Mongo
+//conexion a mongo
 
-mongoose.connect('mongodb://localhost:27017/miapp',{
+mongoose.connect('mongodb://localhost:27017/tallerMongoDB',{
     useNewUrlParser:true,
     useUnifiedTopology:true,
 })
 .then(()=>console.log("MongoDB conectado"))
 .catch(err=>console.err(err))
 
-//rutas
+//Rutas
+app.use('/api/Usuarios',usuariosRoutes);
+app.use('/api/Producto',ClienteRoutes);
 
-app.use('api/items', itemRoutes);
-
-app.listen(port,()=>{
-    console.log(`Servidor corriendo sobre http://localhost:${port}`);
+app.listen(PORT,()=>{
+    console.log(`Servidor conectado en http://localhost:${PORT}`);
 });
-//
+
+
