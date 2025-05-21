@@ -2,7 +2,7 @@ const express=require('express');
 const mongoose=require('mongoose');
 const bodyParser=require('body-parser');
 const cors=require('cors');
-const ClienteRoutes=require('./routes/productoRoutes')
+const productoRoutes=require('./routes/productoRoutes')
 const usuariosRoutes=require('./routes/usuariosRoutes')
 
 const app=express();
@@ -23,7 +23,7 @@ mongoose.connect('mongodb://localhost:27017/tallerMongoDB',{
 
 //Rutas
 app.use('/api/Usuarios',usuariosRoutes);
-app.use('/api/Producto',ClienteRoutes);
+app.use('/api/producto',productoRoutes);
 
 app.listen(PORT,()=>{
     console.log(`Servidor conectado en http://localhost:${PORT}`);

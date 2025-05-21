@@ -6,9 +6,9 @@ const Producto =require('../models/Producto');
 //Registrar un producto
 router.post('/',async(req,res)=>{
     try{
-        const item=new Item(req.body);
-        await item.save();
-        res.status(201).json(item);
+        const producto=new Producto(req.body);
+        await producto.save();
+        res.status(201).json(producto);
 
     }catch(error){
         res.status(400).json({ error: error.menssage});

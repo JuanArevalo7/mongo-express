@@ -3,7 +3,7 @@ const router=express.Router();
 const Cliente=require('../models/Usuarios');
 
 
-//Registrar un producto
+//Registrar un usuario
 router.post('/',async(req,res)=>{
     try{
         const cliente=new Cliente(req.body);
