@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const Cliente=require('../models/Usuarios');
+const Cliente=require('../models/Viaje');
 
 
 //Registrar un usuario

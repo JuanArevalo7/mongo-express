@@ -1,19 +1,17 @@
-const express=require('express');
-const router=express.Router();
-const Producto =require('../models/Producto');
+const express = require('express');
+const router = express.Router();
+const Vehiculo = require('../models/Vehiculo'); 
 
-
-//Registrar un producto
-router.post('/',async(req,res)=>{
-    try{
-        const producto=new Producto(req.body);
-        await producto.save();
-        res.status(201).json(producto);
-
-    }catch(error){
-        res.status(400).json({ error: error.menssage});
-}
-})
+// Registrar un vehículo
+router.post('/', async (req, res) => {
+    try {
+        const vehiculo = new Vehiculo(req.body); 
+        await vehiculo.save();
+        res.status(201).json(vehiculo);
+    } catch (error) {
+        res.status(400).json({ error: error.message }); 
+    }
+});
 router.get('/', async (req, res) => {
   try {
     const { precio } = req.query;
